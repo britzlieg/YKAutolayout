@@ -9,10 +9,8 @@
 #import "YKAutolayoutModel.h"
 #import "Masonry.h"
 
-//typedef NS_ENUM(NSInteger, YKAutolayoutModelProperty) {
-//    YKAutolayoutModel_none = 0,
-//
-//};
+#define YKWeakObj(o) autoreleasepool{} __weak typeof(o) o##Weak = o
+#define YKStrongObj(o) autoreleasepool{} __strong typeof(o) o = o##Weak
 
 @interface YKAutolayoutModel()
 
@@ -107,7 +105,9 @@
 
 - (YKAutolayoutTop)top {
     [self assert];
+    @YKWeakObj(self);
     return ^(CGFloat value) {
+        @YKStrongObj(self);
         [self reference:[_selfView superview] value:value type:@"mas_top_e"];
         return self;
     };
@@ -115,7 +115,9 @@
 
 - (YKAutolayoutBottom)bottom {
     [self assert];
+    @YKWeakObj(self);
     return ^(CGFloat value) {
+        @YKStrongObj(self);
         [self reference:[_selfView superview] value:value type:@"mas_bottom_e"];
         return self;
     };
@@ -123,7 +125,9 @@
 
 - (YKAutolayoutLeft)left {
     [self assert];
+    @YKWeakObj(self);
     return ^(CGFloat value) {
+        @YKStrongObj(self);
         [self reference:[_selfView superview] value:value type:@"mas_left_e"];
         return self;
     };
@@ -131,7 +135,9 @@
 
 - (YKAutolayoutRight)right {
     [self assert];
+    @YKWeakObj(self);
     return ^(CGFloat value) {
+        @YKStrongObj(self);
         [self reference:[_selfView superview] value:value type:@"mas_right_e"];
         return self;
     };
@@ -139,7 +145,9 @@
 
 - (YKAutolayoutWidth)width {
     [self assert];
+    @YKWeakObj(self);
     return ^(CGFloat value) {
+        @YKStrongObj(self);
         [self reference:[_selfView superview] value:value type:@"mas_width_value_e"];
         return self;
     };
@@ -147,7 +155,9 @@
 
 - (YKAutolayoutHeight)height {
     [self assert];
+    @YKWeakObj(self);
     return ^(CGFloat value) {
+        @YKStrongObj(self);
         [self reference:[_selfView superview] value:value type:@"mas_height_value_e"];
         return self;
     };
@@ -155,7 +165,9 @@
 
 - (YKAutolayoutWidth)widthMore {
     [self assert];
+    @YKWeakObj(self);
     return ^(CGFloat value) {
+        @YKStrongObj(self);
         [self reference:[_selfView superview] value:value type:@"mas_width_value_m"];
         return self;
     };
@@ -163,7 +175,9 @@
 
 - (YKAutolayoutHeight)heightMore {
     [self assert];
+    @YKWeakObj(self);
     return ^(CGFloat value) {
+        @YKStrongObj(self);
         [self reference:[_selfView superview] value:value type:@"mas_height_value_m"];
         return self;
     };
@@ -171,7 +185,9 @@
 
 - (YKAutolayoutWidth)widthLess {
     [self assert];
+    @YKWeakObj(self);
     return ^(CGFloat value) {
+        @YKStrongObj(self);
         [self reference:[_selfView superview] value:value type:@"mas_width_value_l"];
         return self;
     };
@@ -179,7 +195,9 @@
 
 - (YKAutolayoutHeight)heightLess {
     [self assert];
+    @YKWeakObj(self);
     return ^(CGFloat value) {
+        @YKStrongObj(self);
         [self reference:[_selfView superview] value:value type:@"mas_height_value_l"];
         return self;
     };
@@ -196,7 +214,9 @@
 #pragma mark - Equal
 - (YKAutolayoutReference)topTo {
     [self assert];
+    @YKWeakObj(self);
     return ^(id reference, CGFloat value){
+        @YKStrongObj(self);
         [self reference:reference value:value type:@"mas_top_e"];
         return self;
     };
@@ -204,7 +224,9 @@
 
 - (YKAutolayoutReference)rightTo {
     [self assert];
+    @YKWeakObj(self);
     return ^(id reference, CGFloat value){
+        @YKStrongObj(self);
         [self reference:reference value:value type:@"mas_right_e"];
         return self;
     };
@@ -212,7 +234,9 @@
 
 - (YKAutolayoutReference)leftTo {
     [self assert];
+    @YKWeakObj(self);
     return ^(id reference, CGFloat value){
+        @YKStrongObj(self);
         [self reference:reference value:value type:@"mas_left_e"];
         return self;
     };
@@ -220,14 +244,18 @@
 
 - (YKAutolayoutReference)bottomTo {
     [self assert];
+    @YKWeakObj(self);
     return ^(id reference, CGFloat value){
+        @YKStrongObj(self);
         [self reference:reference value:value type:@"mas_bottom_e"];
         return self;
     };
 }
 - (YKAutolayoutReference)widthTo {
     [self assert];
+    @YKWeakObj(self);
     return ^(id reference, CGFloat value){
+        @YKStrongObj(self);
         [self reference:reference value:value type:@"mas_width_e"];
         return self;
     };
@@ -235,7 +263,9 @@
 
 - (YKAutolayoutReference)heightTo {
     [self assert];
+    @YKWeakObj(self);
     return ^(id reference, CGFloat value){
+        @YKStrongObj(self);
         [self reference:reference value:value type:@"mas_height_e"];
         return self;
     };
@@ -243,7 +273,9 @@
 
 - (YKAutolayoutReference)centerXTo {
     [self assert];
+    @YKWeakObj(self);
     return ^(id reference, CGFloat value){
+        @YKStrongObj(self);
         [self reference:reference value:value type:@"mas_centerX_e"];
         return self;
     };
@@ -251,7 +283,9 @@
 
 - (YKAutolayoutReference)centerYTo {
     [self assert];
+    @YKWeakObj(self);
     return ^(id reference, CGFloat value){
+        @YKStrongObj(self);
         [self reference:reference value:value type:@"mas_centerY_e"];
         return self;
     };
@@ -260,7 +294,9 @@
 #pragma mark - Greater
 - (YKAutolayoutReference)topMoreTo {
     [self assert];
+    @YKWeakObj(self);
     return ^(id reference, CGFloat value){
+        @YKStrongObj(self);
         [self reference:reference value:value type:@"mas_top_m"];
         return self;
     };
@@ -268,7 +304,9 @@
 
 - (YKAutolayoutReference)rightMoreTo {
     [self assert];
+    @YKWeakObj(self);
     return ^(id reference, CGFloat value){
+        @YKStrongObj(self);
         [self reference:reference value:value type:@"mas_right_m"];
         return self;
     };
@@ -276,7 +314,9 @@
 
 - (YKAutolayoutReference)leftMoreTo {
     [self assert];
+    @YKWeakObj(self);
     return ^(id reference, CGFloat value){
+        @YKStrongObj(self);
         [self reference:reference value:value type:@"mas_left_m"];
         return self;
     };
@@ -284,14 +324,18 @@
 
 - (YKAutolayoutReference)bottomMoreTo {
     [self assert];
+    @YKWeakObj(self);
     return ^(id reference, CGFloat value){
+        @YKStrongObj(self);
         [self reference:reference value:value type:@"mas_bottom_m"];
         return self;
     };
 }
 - (YKAutolayoutReference)widthMoreTo {
     [self assert];
+    @YKWeakObj(self);
     return ^(id reference, CGFloat value){
+        @YKStrongObj(self);
         [self reference:reference value:value type:@"mas_width_m"];
         return self;
     };
@@ -299,7 +343,9 @@
 
 - (YKAutolayoutReference)heightMoreTo {
     [self assert];
+    @YKWeakObj(self);
     return ^(id reference, CGFloat value){
+        @YKStrongObj(self);
         [self reference:reference value:value type:@"mas_height_m"];
         return self;
     };
@@ -307,7 +353,9 @@
 
 - (YKAutolayoutReference)centerXMoreTo {
     [self assert];
+    @YKWeakObj(self);
     return ^(id reference, CGFloat value){
+        @YKStrongObj(self);
         [self reference:reference value:value type:@"mas_centerX_m"];
         return self;
     };
@@ -316,7 +364,9 @@
 #pragma mark - Less
 - (YKAutolayoutReference)topLessTo {
     [self assert];
+    @YKWeakObj(self);
     return ^(id reference, CGFloat value){
+        @YKStrongObj(self);
         [self reference:reference value:value type:@"mas_top_l"];
         return self;
     };
@@ -324,7 +374,9 @@
 
 - (YKAutolayoutReference)rightLessTo {
     [self assert];
+    @YKWeakObj(self);
     return ^(id reference, CGFloat value){
+        @YKStrongObj(self);
         [self reference:reference value:value type:@"mas_right_l"];
         return self;
     };
@@ -332,7 +384,9 @@
 
 - (YKAutolayoutReference)leftLessTo {
     [self assert];
+    @YKWeakObj(self);
     return ^(id reference, CGFloat value){
+        @YKStrongObj(self);
         [self reference:reference value:value type:@"mas_left_l"];
         return self;
     };
@@ -340,14 +394,18 @@
 
 - (YKAutolayoutReference)bottomLessTo {
     [self assert];
+    @YKWeakObj(self);
     return ^(id reference, CGFloat value){
+        @YKStrongObj(self);
         [self reference:reference value:value type:@"mas_bottom_l"];
         return self;
     };
 }
 - (YKAutolayoutReference)widthLessTo {
     [self assert];
+    @YKWeakObj(self);
     return ^(id reference, CGFloat value){
+        @YKStrongObj(self);
         [self reference:reference value:value type:@"mas_width_l"];
         return self;
     };
@@ -355,7 +413,9 @@
 
 - (YKAutolayoutReference)heightLessTo {
     [self assert];
+    @YKWeakObj(self);
     return ^(id reference, CGFloat value){
+        @YKStrongObj(self);
         [self reference:reference value:value type:@"mas_height_l"];
         return self;
     };
@@ -363,7 +423,9 @@
 
 - (YKAutolayoutReference)centerXLessTo {
     [self assert];
+    @YKWeakObj(self);
     return ^(id reference, CGFloat value){
+        @YKStrongObj(self);
         [self reference:reference value:value type:@"mas_centerX_l"];
         return self;
     };
@@ -371,7 +433,9 @@
 
 - (YKAutolayoutReference)centerYLessTo {
     [self assert];
+    @YKWeakObj(self);
     return ^(id reference, CGFloat value){
+        @YKStrongObj(self);
         [self reference:reference value:value type:@"mas_centerY_l"];
         return self;
     };
@@ -790,9 +854,11 @@
 #pragma mark - Done
 - (YKAutolayoutDone)done {
     [self assert];
+    @YKWeakObj(self);
     return ^() {
         if (self.setupType == YKAutolayoutMakeType) {
             [self.selfView mas_makeConstraints:^(MASConstraintMaker *make) {
+                @YKStrongObj(self);
                 [self topMaker:make];
                 [self leftMaker:make];
                 [self rightMaker:make];
@@ -805,6 +871,7 @@
         }
         else if (self.setupType == YKAutolayoutUpdateType) {
             [self.selfView mas_updateConstraints:^(MASConstraintMaker *make) {
+                @YKStrongObj(self);
                 [self topMaker:make];
                 [self leftMaker:make];
                 [self rightMaker:make];
@@ -817,6 +884,7 @@
         }
         else if (self.setupType == YKAutolayoutReMakeType) {
             [self.selfView mas_remakeConstraints:^(MASConstraintMaker *make) {
+                @YKStrongObj(self);
                 [self topMaker:make];
                 [self leftMaker:make];
                 [self rightMaker:make];

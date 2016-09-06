@@ -51,6 +51,10 @@ typedef YKAutolayoutModel *(^YKAutolayoutDone)();
 
 - (YKAutolayoutHeight)heightLess;
 
+- (YKAutolayoutReference)widthAspectTo;
+
+- (YKAutolayoutReference)heightAspectTo;
+
 - (YKAutolayoutReference)topTo;
 
 - (YKAutolayoutReference)rightTo;

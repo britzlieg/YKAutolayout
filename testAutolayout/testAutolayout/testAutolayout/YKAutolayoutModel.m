@@ -36,9 +36,18 @@
 
 @property(nonatomic, assign) CGFloat heightLessValue;
 
+@property(nonatomic, assign) CGFloat widthAspectValue;
+
+@property(nonatomic, assign) CGFloat heightAspectValue;
+
 @property(nonatomic, assign) CGFloat centerXValue;
 
 @property(nonatomic, assign) CGFloat centerYValue;
+
+// aspect
+@property(strong, nonatomic) MASViewAttribute *yk_widthAspectReference;
+
+@property(strong, nonatomic) MASViewAttribute *yk_heightAspectReference;
 
 // equal
 @property(strong, nonatomic) MASViewAttribute *yk_topReferecen;
@@ -91,7 +100,9 @@
 
 @property(strong, nonatomic) MASViewAttribute *yk_centerYLessReference;
 
+
 @end
+
 
 @implementation YKAutolayoutModel
 
@@ -199,6 +210,26 @@
     return ^(CGFloat value) {
         @YKStrongObj(self);
         [self reference:[_selfView superview] value:value type:@"mas_height_value_l"];
+        return self;
+    };
+}
+
+- (YKAutolayoutReference)widthAspectTo {
+    [self assert];
+    @YKWeakObj(self);
+    return ^(id reference, CGFloat value){
+        @YKStrongObj(self);
+        [self reference:reference value:value type:@"mas_width_aspect"];
+        return self;
+    };
+}
+
+- (YKAutolayoutReference)heightAspectTo {
+    [self assert];
+    @YKWeakObj(self);
+    return ^(id reference, CGFloat value){
+        @YKStrongObj(self);
+        [self reference:reference value:value type:@"mas_height_aspect"];
         return self;
     };
 }
@@ -357,6 +388,16 @@
     return ^(id reference, CGFloat value){
         @YKStrongObj(self);
         [self reference:reference value:value type:@"mas_centerX_m"];
+        return self;
+    };
+}
+
+- (YKAutolayoutReference)centerYMoreTo {
+    [self assert];
+    @YKWeakObj(self);
+    return ^(id reference, CGFloat value){
+        @YKStrongObj(self);
+        [self reference:reference value:value type:@"mas_centerY_m"];
         return self;
     };
 }
@@ -546,40 +587,30 @@
         }
         // value
         else if ([type isEqualToString:@"mas_width_value_e"]) {
-            self.yk_widthReference = nil;
-            self.yk_widthLessReference = nil;
-            self.yk_widthMoreReference = nil;
             self.widthValue = value;
         }
         else if ([type isEqualToString:@"mas_width_value_m"]) {
-            self.yk_widthReference = nil;
-            self.yk_widthLessReference = nil;
-            self.yk_widthMoreReference = nil;
             self.widthMoreValue = value;
         }
         else if ([type isEqualToString:@"mas_width_value_l"]) {
-            self.yk_widthReference = nil;
-            self.yk_widthLessReference = nil;
-            self.yk_widthMoreReference = nil;
             self.widthLessValue = value;
         }
         else if ([type isEqualToString:@"mas_height_value_e"]) {
-            self.yk_heightReference = nil;
-            self.yk_heightLessReference = nil;
-            self.yk_heightMoreReference = nil;
             self.heightValue = value;
         }
         else if ([type isEqualToString:@"mas_height_value_m"]) {
-            self.yk_heightReference = nil;
-            self.yk_heightLessReference = nil;
-            self.yk_heightMoreReference = nil;
             self.heightMoreValue = value;
         }
         else if ([type isEqualToString:@"mas_height_value_l"]) {
-            self.yk_heightReference = nil;
-            self.yk_heightLessReference = nil;
-            self.yk_heightMoreReference = nil;
             self.heightLessValue = value;
+        }
+        else if ([type isEqualToString:@"mas_width_aspect"]) {
+            self.widthAspectValue = value;
+            self.yk_widthAspectReference = view.mas_width;
+        }
+        else if ([type isEqualToString:@"mas_height_aspect"]) {
+            self.heightAspectValue = value;
+            self.yk_heightAspectReference = view.mas_height;
         }
     }
     else if ([reference isKindOfClass:[MASViewAttribute class]]) {
@@ -683,42 +714,31 @@
         }
         // value
         else if ([type isEqualToString:@"mas_width_value_e"]) {
-            self.yk_widthReference = nil;
-            self.yk_widthLessReference = nil;
-            self.yk_widthMoreReference = nil;
             self.widthValue = value;
         }
         else if ([type isEqualToString:@"mas_width_value_m"]) {
-            self.yk_widthReference = nil;
-            self.yk_widthLessReference = nil;
-            self.yk_widthMoreReference = nil;
             self.widthMoreValue = value;
         }
         else if ([type isEqualToString:@"mas_width_value_l"]) {
-            self.yk_widthReference = nil;
-            self.yk_widthLessReference = nil;
-            self.yk_widthMoreReference = nil;
             self.widthLessValue = value;
         }
         else if ([type isEqualToString:@"mas_height_value_e"]) {
-            self.yk_heightReference = nil;
-            self.yk_heightLessReference = nil;
-            self.yk_heightMoreReference = nil;
             self.heightValue = value;
         }
         else if ([type isEqualToString:@"mas_height_value_m"]) {
-            self.yk_heightReference = nil;
-            self.yk_heightLessReference = nil;
-            self.yk_heightMoreReference = nil;
             self.heightMoreValue = value;
         }
         else if ([type isEqualToString:@"mas_height_value_l"]) {
-            self.yk_heightReference = nil;
-            self.yk_heightLessReference = nil;
-            self.yk_heightMoreReference = nil;
             self.heightLessValue = value;
         }
-
+        else if ([type isEqualToString:@"mas_width_aspect"]) {
+            self.widthAspectValue = value;
+            self.yk_widthAspectReference = reference;
+        }
+        else if ([type isEqualToString:@"mas_height_aspect"]) {
+            self.heightAspectValue = value;
+            self.yk_heightAspectReference = reference;
+        }
     }
 }
 
@@ -785,6 +805,9 @@
     else if (self.yk_widthLessReference) {
         make.width.mas_lessThanOrEqualTo(self.yk_widthLessReference).offset(self.widthValue);
     }
+    else if (self.yk_widthAspectReference) {
+        make.width.mas_equalTo(self.yk_widthAspectReference).multipliedBy(self.widthAspectValue);
+    }
     else {
         // value
         if (self.widthMoreValue > 0) {
@@ -809,6 +832,9 @@
     }
     else if (self.yk_heightLessReference) {
         make.height.mas_lessThanOrEqualTo(self.yk_heightLessReference).offset(self.heightValue);
+    }
+    else if (self.yk_heightAspectReference) {
+        make.height.mas_equalTo(self.yk_heightAspectReference).multipliedBy(self.heightAspectValue);
     }
     else {
         // value

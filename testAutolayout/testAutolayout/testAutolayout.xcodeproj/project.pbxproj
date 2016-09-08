@@ -26,6 +26,7 @@
 		57E790C01D7961FB0067285A /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E790B51D7961FB0067285A /* ViewController+MASAdditions.m */; };
 		57E790C41D7962970067285A /* YKAutolayoutModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E790C31D7962970067285A /* YKAutolayoutModel.m */; };
 		57E790C71D7962B60067285A /* UIView+YKAutolayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E790C61D7962B60067285A /* UIView+YKAutolayout.m */; };
+		57F564F91D813F27003888F7 /* YKAutoScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 57F564F81D813F27003888F7 /* YKAutoScrollView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,8 @@
 		57E790C31D7962970067285A /* YKAutolayoutModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKAutolayoutModel.m; sourceTree = "<group>"; };
 		57E790C51D7962B60067285A /* UIView+YKAutolayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+YKAutolayout.h"; sourceTree = "<group>"; };
 		57E790C61D7962B60067285A /* UIView+YKAutolayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+YKAutolayout.m"; sourceTree = "<group>"; };
+		57F564F71D813F27003888F7 /* YKAutoScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YKAutoScrollView.h; sourceTree = "<group>"; };
+		57F564F81D813F27003888F7 /* YKAutoScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YKAutoScrollView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +105,7 @@
 		57E790831D7961E90067285A /* testAutolayout */ = {
 			isa = PBXGroup;
 			children = (
+				57F564F61D813EDB003888F7 /* AutoScrollView */,
 				57E790C11D79621D0067285A /* MAS */,
 				57E790871D7961E90067285A /* AppDelegate.h */,
 				57E790881D7961E90067285A /* AppDelegate.m */,
@@ -167,6 +171,15 @@
 				57E790C61D7962B60067285A /* UIView+YKAutolayout.m */,
 			);
 			name = MAS;
+			sourceTree = "<group>";
+		};
+		57F564F61D813EDB003888F7 /* AutoScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				57F564F71D813F27003888F7 /* YKAutoScrollView.h */,
+				57F564F81D813F27003888F7 /* YKAutoScrollView.m */,
+			);
+			name = AutoScrollView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -244,6 +257,7 @@
 				57E790BC1D7961FB0067285A /* MASViewConstraint.m in Sources */,
 				57E790B71D7961FB0067285A /* MASCompositeConstraint.m in Sources */,
 				57E790BD1D7961FB0067285A /* NSArray+MASAdditions.m in Sources */,
+				57F564F91D813F27003888F7 /* YKAutoScrollView.m in Sources */,
 				57E7908C1D7961E90067285A /* ViewController.m in Sources */,
 				57E790891D7961E90067285A /* AppDelegate.m in Sources */,
 				57E790C71D7962B60067285A /* UIView+YKAutolayout.m in Sources */,
@@ -403,6 +417,7 @@
 				57E7909A1D7961E90067285A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -23,7 +23,7 @@ typedef YKAutolayoutModel *(^YKAutolayoutBottom)(CGFloat value);
 typedef YKAutolayoutModel *(^YKAutolayoutWidth)(CGFloat value);
 typedef YKAutolayoutModel *(^YKAutolayoutHeight)(CGFloat value);
 
-typedef YKAutolayoutModel *(^YKAutolayoutReference)(id reference,CGFloat value);
+typedef YKAutolayoutModel *(^YKAutolayoutReference)(id referencwe,CGFloat value);
 
 typedef YKAutolayoutModel *(^YKAutolayoutDone)();
 

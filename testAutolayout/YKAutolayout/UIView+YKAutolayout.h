@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "YKAutolayoutModel.h"
+#import "Masonry.h"
 
 @interface UIView(YKAutolayout)
 

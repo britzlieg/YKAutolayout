@@ -12,7 +12,7 @@
 
 static char *YKAutolayoutModelConstraintsKey;
 
-@interface UIView(YKAutolayout)
+@interface UIView()
 
 @property(strong, nonatomic) YKAutolayoutModel *constraintsModel;
 

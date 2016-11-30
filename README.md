@@ -1,5 +1,5 @@
-# YKAutolayout
-A tool to use Masonry with Objective C Chain Syntax. Make Masonry Easier!
+# YKAutolayout - Make Masonry Easier!
+A tool to use Masonry with Objective C Chain Syntax. 
 
 ## Introduction
 YKAutolayout is an extension of Masonry.It offers the convinient API to do what Masonry do.
